@@ -78,7 +78,11 @@ NSError* vineFetchError(MBVineVideoFetchError code, NSError* originalError) {
                                        return handler(nil, vineFetchError(MBVineVideoFetchErrorParserError, error));
                                    }
                                    
-                                   ONOXMLElement* configurationElement = [document firstChildWithCSS:@"#configuration"];
+                                   __block ONOXMLElement* configurationElement = nil;
+                                   [document enumerateElementsWithCSS:@"#configuration" block:^(ONOXMLElement *element) {
+                                       configurationElement = element;
+                                   }];
+                                   
                                    if (!configurationElement)
                                    {
                                        return handler(nil, vineFetchError(MBVineVideoFetchErrorParserError, nil));
