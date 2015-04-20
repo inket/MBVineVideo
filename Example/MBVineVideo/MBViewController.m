@@ -7,6 +7,8 @@
 //
 
 #import "MBViewController.h"
+#import "../../Pod/Classes/MBVineVideo.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface MBViewController ()
 
@@ -18,6 +20,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [MBVineVideo fetchVineFromURL:@"http://vine.co/v/euEpIVegiIx" completionHandler:^(MBVineVideo *vine, NSError *error) {
+        NSLog(@"%@\n%@\n%@\n%@", vine, vine.title, vine.thumbnailURL, vine.videoURL);
+        
+        MPMoviePlayerViewController* videoPlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:vine.videoURL];
+        [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
