@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Pod/Classes/**/*'
 
   s.public_header_files = 'Pod/Classes/**/*.h'
-  s.dependency 'Ono', '~> 1.0'
+  s.dependency 'Ono', '~> 1.1'
 end
