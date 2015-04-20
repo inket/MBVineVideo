@@ -18,13 +18,13 @@ typedef enum : NSUInteger {
     MBVineVideoFetchErrorParserError
 } MBVineVideoFetchError;
 
-typedef void (^completionHandler) (MBVineVideo* vine, NSError *error);
+typedef void (^MBVineVideoCompletionHandler) (MBVineVideo* vine, NSError *error);
 
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, strong) NSURL* thumbnailURL;
 @property (nonatomic, strong) NSURL* videoURL;
 
-+ (void)fetchVineFromURL:(NSString*)url completionHandler:(completionHandler)handler;
-+ (void)fetchVineFromID:(NSString*)identifier completionHandler:(completionHandler)handler;
++ (void)fetchVineFromURL:(NSString*)url completionHandler:(MBVineVideoCompletionHandler)handler;
++ (void)fetchVineFromID:(NSString*)identifier completionHandler:(MBVineVideoCompletionHandler)handler;
 
 @end

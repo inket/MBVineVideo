@@ -32,7 +32,7 @@ NSError* vineFetchError(MBVineVideoFetchError code, NSError* originalError) {
     return error;
 }
 
-+ (void)fetchVineFromURL:(NSString*)url completionHandler:(completionHandler)handler {
++ (void)fetchVineFromURL:(NSString*)url completionHandler:(MBVineVideoCompletionHandler)handler {
     NSURL* vineURL = [NSURL URLWithString:url];
     BOOL validURL = [@"vine.co" isEqualToString:vineURL.host];
     if (!validURL) return handler(nil, vineFetchError(MBVineVideoFetchErrorInvalidURL, nil));
@@ -57,7 +57,7 @@ NSError* vineFetchError(MBVineVideoFetchError code, NSError* originalError) {
     [MBVineVideo fetchVineFromID:vineIdentifier completionHandler:handler];
 }
 
-+ (void)fetchVineFromID:(NSString*)identifier completionHandler:(completionHandler)handler {
++ (void)fetchVineFromID:(NSString*)identifier completionHandler:(MBVineVideoCompletionHandler)handler {
     identifier = [identifier stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if (identifier.length < 1) return handler(nil, vineFetchError(MBVineVideoFetchErrorInvalidID, nil));
     
