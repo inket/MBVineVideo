@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "MBVineVideo"
-  s.version          = "1.0.0"
+  s.version          = "1.1.0"
   s.summary          = "Extracts video url and information from Vine"
   s.homepage         = "https://github.com/inket/MBVineVideo"
   s.license          = 'MIT'
